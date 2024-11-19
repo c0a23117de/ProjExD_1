@@ -8,11 +8,13 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
+    
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img, True, False)
     kk_img = pg.transform.rotozoom(kk_img, 10, 1.0)
+    bg_img2 = pg.transform.flip(bg_img, True, False)
     
     tmr = 0
     while True:
@@ -20,8 +22,11 @@ def main():
             if event.type == pg.QUIT: return
 
         tmr += 1
-        x = tmr%800
+        x = tmr%3200
         screen.blit(bg_img, [-x, 0])
+        screen.blit(bg_img2,[-x+1600, 0])
+        screen.blit(bg_img, [-x+3200, 0])
+        screen.blit(bg_img2,[-x+4800, 0])
         
                 
         clock.tick(200)
