@@ -19,9 +19,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-tmr, 0])
+        tmr += 1
+        x = tmr%800
+        screen.blit(bg_img, [-x, 0])
         
-        tmr += 1        
+                
         clock.tick(200)
         screen.blit(kk_img, [300, 200])
         pg.display.update()
