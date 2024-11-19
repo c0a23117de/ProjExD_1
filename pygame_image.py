@@ -21,13 +21,12 @@ def main():
         screen.blit(bg_img, [0, 0])
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
-        img = pg.image.load("fig/3.png")
+        clock.tick(200)
 
         enn = pg.surface((20,20))
         pg.draw.circle(enn, (255, 0, 0), (10,10), 10)
 
-        screen.blit(img, [300, 200])
+        screen.blit(kk_img, [300, 200])
 
         pg.display.update()
 
