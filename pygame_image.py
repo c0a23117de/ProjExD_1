@@ -4,6 +4,9 @@ import pygame as pg
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+x = 0
+y = 0
+
 
 def main():
     pg.display.set_caption("はばたけ！こうかとん")
@@ -26,36 +29,32 @@ def main():
             if event.type == pg.QUIT: return
 
         tmr += 1
-        x = tmr%3200
-        screen.blit(bg_img, [-x, 0])
-        screen.blit(bg_img2,[-x+1600, 0])
-        screen.blit(bg_img, [-x+3200, 0])
-        screen.blit(bg_img2,[-x+4800, 0])
-
-
-
-
+        t = tmr%3200
+        screen.blit(bg_img, [-t, 0])
+        screen.blit(bg_img2,[-t+1600, 0])
+        screen.blit(bg_img, [-t+3200, 0])
+        screen.blit(bg_img2,[-t+4800, 0])
         
-        
-                
         clock.tick(200)
-
-        key_lst = pg.key.get_pressed()
-
-        kk_rct.move_ip((-1,0))
         
+        
+        x=0
+        y=0
+        key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
+            y -= 1
         elif key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,+1))
+            y += 1
         elif key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            x -= 1
         elif key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((+2,0))
+            x +=2
+        kk_rct.move_ip((-1+x,y))
 
+
+        
         screen.blit(kk_img, kk_rct)
         pg.display.update()
-        
 
         
 
@@ -65,3 +64,4 @@ if __name__ == "__main__":
     main()
     pg.quit()
     sys.exit()
+
